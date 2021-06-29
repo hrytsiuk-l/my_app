@@ -3,4 +3,6 @@ Rails.application.routes.draw do
   
   get '/1', to: 'application#pong_return'
 
+  post 'auth/register', to: 'users#register'
+
 end
