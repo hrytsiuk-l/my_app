@@ -16,10 +16,12 @@ class JsonWebToken
           HashWithIndifferentAccess.new body
     
         # raise custom error to be handled by custom handler
-        rescue JWT::ExpiredSignature, JWT::VerificationError => e
-          raise ExceptionHandler::ExpiredSignature, e.message
-        rescue JWT::DecodeError, JWT::VerificationError => e
-          raise ExceptionHandler::DecodeError, e.message
+        # rescue JWT::ExpiredSignature, JWT::VerificationError => e
+        #   raise ExceptionHandler::ExpiredSignature, e.message
+        # rescue JWT::DecodeError, JWT::VerificationError => e
+        #   raise ExceptionHandler::DecodeError, e.message
+        rescue
+          nil
         end
       end
     end
