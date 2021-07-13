@@ -1,0 +1,2 @@
+class AudienceController < ApplicationController
+end

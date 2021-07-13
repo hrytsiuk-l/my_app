@@ -1,8 +1,6 @@
 class User < ApplicationRecord
-    #Validations
-   validates_presence_of :name, :email, :password_digest
-   validates :email, uniqueness: true
- 
-   #encrypt password
-   has_secure_password
+  has_secure_password
+
+  validates_presence_of :name, :email, :password_digest
+  validates :email, uniqueness: true, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
 end
