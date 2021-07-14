@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20210712142555) do
+ActiveRecord::Schema.define(version: 20210714103648) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,8 +25,10 @@ ActiveRecord::Schema.define(version: 20210712142555) do
   create_table "campaigns", force: :cascade do |t|
     t.string   "name"
     t.string   "uid"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "audience_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["audience_id"], name: "index_campaigns_on_audience_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -36,6 +38,8 @@ ActiveRecord::Schema.define(version: 20210712142555) do
     t.string   "password_digest"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.index ["uid", "name", "email"], name: "index_users_on_uid_and_name_and_email", unique: true, using: :btree
   end
 
+  add_foreign_key "campaigns", "audiences"
 end

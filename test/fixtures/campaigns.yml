@@ -2,7 +2,9 @@
 one:
   name: MyString
   uid: MyString
+  audience: one
 
 two:
   name: MyString
   uid: MyString
+  audience: two
