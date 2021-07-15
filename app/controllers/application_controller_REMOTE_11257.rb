@@ -1,17 +1,4 @@
 class ApplicationController < ActionController::API
-<<<<<<< HEAD
-
-  def pong_return
-    render json: {“pong”: 200 } if params[:ping]
-  end
-
-  private
-
-  def authenticate_request
-    @current_user = AuthorizeApiRequest.call(request.headers).result
-    render json: { error: 'Not Authorized' }, status: 401 unless @current_user
-  end
-=======
   protect_from_forgery with: :exception
 
     def pong_return
@@ -24,5 +11,4 @@ class ApplicationController < ActionController::API
       @current_user = AuthorizeApiRequest.call(request.headers).result
       render json: { error: 'Not Authorized' }, status: 401 unless @current_user
     end
->>>>>>> fixed typos
 end
