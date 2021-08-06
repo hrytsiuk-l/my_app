@@ -1,5 +1,5 @@
 class CampaignsController < ApplicationController
-  before_action :set_campaign, only: %i[show edit update destroy]
+  before_action :find_campaign, only: %i[show update destroy]
 
   def create
     @campaign = Campaign.new(campaign_params)
@@ -25,7 +25,7 @@ class CampaignsController < ApplicationController
 
   private
 
-  def set_campaign
+  def find_campaign
     @campaign = Campaign.find(params[:id])
   end
 

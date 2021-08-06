@@ -1,6 +1,6 @@
 class Audience < ApplicationRecord
   has_many :campaigns
-  
-  validates_presence_of :name, :uid
+
+  validates :name, :uid, presence: true 
   validates :name, :uid, uniqueness: true
 end
