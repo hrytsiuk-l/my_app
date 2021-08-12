@@ -10,4 +10,8 @@ Rails.application.routes.draw do
   get 'test', to: 'users#test'
 
   resources :campaigns, except: [:edit, :new]
+
+  resources :users do 
+    resources :roles
+  end
 end
