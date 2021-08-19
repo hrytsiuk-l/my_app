@@ -1,5 +1,7 @@
 class ApplicationController < ActionController::API
 
+  include Pundit
+  
   def pong_return
     render json: {“pong”: 200 } if params[:ping]
   end
