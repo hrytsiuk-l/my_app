@@ -1,8 +1,8 @@
 class UserRolesController < ApplicationController
   def create
-    if policy.if_admin?
+    if policy.admin?
   end
-
+  
   private
 
   def policy

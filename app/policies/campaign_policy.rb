@@ -11,16 +11,10 @@ class CampaignPolicy < ApplicationPolicy
   end
 
   def update?
-    user.admin? && user == campaign.user
+    user.admin? && user == record.user
   end
  
   def destroy?
-    user.admin? && user == campaign.user
+    user.admin? && user == record.user
   end
-
-  private
-
-    def campaign
-      record
-    end
 end
