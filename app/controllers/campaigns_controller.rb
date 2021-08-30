@@ -36,5 +36,5 @@ class CampaignsController < ApplicationController
 
   def campaign_params
     params.require(:campaign).permit(:name, :uid, :audience_id)
-  end  
+  end
 end

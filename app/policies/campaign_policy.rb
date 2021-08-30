@@ -1,20 +1,33 @@
 # frozen_string_literal: true
 
 class CampaignPolicy < ApplicationPolicy
-
   def index?
-    true
+    read_permission?
   end
 
   def create?
-    user.admin?
+    manage_permission? && check_user
   end
 
   def update?
-    user.admin? && user == record.user
+    manage_permission? && check_user
   end
- 
+
   def destroy?
-    user.admin? && user == record.user
+    manage_permission? && check_user
+  end
+
+  private
+
+  def check_user
+    user == campaign.user
+  end
+
+  def manage_permission?
+    user.roles.any? { |role| role.permission == 'manage' && role.resource_name == 'Campaign' }
+  end
+
+  def read_permission?
+    user.roles.any? { |role| role.permission == 'read' }
   end
 end

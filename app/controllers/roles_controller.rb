@@ -36,7 +36,7 @@ class RolesController < ApplicationController
   private
 
   def get_user
-    @user = User.find(params[:list_id])
+    @user = User.find(params[:user_id])
   end
 
   def set_role
