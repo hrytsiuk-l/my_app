@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'boot'
 
 require 'rails/all'
@@ -13,17 +15,17 @@ module MyApp
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
 
-    #cors configuration
+    # cors configuration
     config.middleware.insert_before 0, Rack::Cors do
       allow do
         origins '*'
         resource '*', :headers => :any, :methods => [:get, :post, :options]
       end
     end
-    #autoloads lib folder during production
+    # autoloads lib folder during production
     config.eager_load_paths << Rails.root.join('lib')
 
-    #autoloads lib folder during development
+    # autoloads lib folder during development
     config.autoload_paths << Rails.root.join('lib')
   end
 end

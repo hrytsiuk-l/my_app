@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class RolesController < ApplicationController
   before_action :get_user
   before_action :set_role, only: %i[show update destroy]
@@ -12,7 +14,7 @@ class RolesController < ApplicationController
 
   def create
     @role = @user.roles.build(role_params)
-    
+
     if @role.save
       render json: { status: :created, role: @role }
     else

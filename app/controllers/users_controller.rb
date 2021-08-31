@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class UsersController < ApplicationController
   skip_before_action :authenticate_request, only: %i[login register]
 
@@ -7,7 +9,7 @@ class UsersController < ApplicationController
       render json: { message: 'User created successfully' }, status: :created
     else
       render json: @user.errors
-   end
+    end
   end
 
   def login
@@ -21,7 +23,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.permit(:name, :email, :password )
+    params.permit(:name, :email, :password)
   end
 
   def authenticate(email, password)

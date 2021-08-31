@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CampaignsController < ApplicationController
   before_action :find_campaign, only: %i[show update destroy]
 
@@ -14,7 +16,7 @@ class CampaignsController < ApplicationController
 
   def update
     @campaign.user = current_user
-    authorize @campaign 
+    authorize @campaign
     if @campaign.update(campaign_params)
       render json: { status: :ok, campaign: @campaign }
     else
