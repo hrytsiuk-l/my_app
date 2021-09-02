@@ -5,8 +5,6 @@ class CampaignsController < ApplicationController
 
   def create
     @campaign = Campaign.new(campaign_params)
-    @campaign.user = current_user
-    authorize @campaign
     if @campaign.save
       render json: { status: :created, campaign: @campaign }
     else
@@ -15,8 +13,6 @@ class CampaignsController < ApplicationController
   end
 
   def update
-    @campaign.user = current_user
-    authorize @campaign
     if @campaign.update(campaign_params)
       render json: { status: :ok, campaign: @campaign }
     else
@@ -33,7 +29,6 @@ class CampaignsController < ApplicationController
 
   def find_campaign
     @campaign = Campaign.find(params[:id])
-    authorize @campaign
   end
 
   def campaign_params
