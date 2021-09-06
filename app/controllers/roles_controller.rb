@@ -10,11 +10,12 @@ class RolesController < ApplicationController
 
   def index
     @roles = @user.roles
+    render json: @roles
   end
 
   def create
     @role = @user.roles.build(role_params)
-
+    authorize @campaign
     if @role.save
       render json: { status: :created, role: @role }
     else

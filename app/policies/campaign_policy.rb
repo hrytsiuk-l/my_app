@@ -6,22 +6,19 @@ class CampaignPolicy < ApplicationPolicy
   end
 
   def create?
-    manage_permission? && check_user
+   manage_permission? 
+    # rails// error
   end
 
   def update?
-    manage_permission? && check_user
+    manage_permission?
   end
 
   def destroy?
-    manage_permission? && check_user
+    manage_permission?
   end
 
   private
-
-  def check_user
-    user == campaign.user
-  end
 
   def manage_permission?
     user.roles.any? { |role| role.permission == 'manage' && role.resource_name == 'Campaign' }

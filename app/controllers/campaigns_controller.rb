@@ -3,8 +3,16 @@
 class CampaignsController < ApplicationController
   before_action :find_campaign, only: %i[show update destroy]
 
+  def index
+    @campaigns = Campaign.all
+    render json: @campaigns
+    authorize @campaigns
+  end
+
   def create
     @campaign = Campaign.new(campaign_params)
+    authorize @campaign
+
     if @campaign.save
       render json: { status: :created, campaign: @campaign }
     else
