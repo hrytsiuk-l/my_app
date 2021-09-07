@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe CampaignsController, type: :controller do
@@ -5,7 +7,7 @@ describe CampaignsController, type: :controller do
     let(:audience) { FactoryBot.create(:audience) }
 
     context 'valid params' do
-      let(:valid_attributes) { {name: 'CMP name', uid: '12345', audience_id: audience.id} }
+      let(:valid_attributes) { { name: 'CMP name', uid: '12345', audience_id: audience.id } }
 
       it 'succesfully saved' do
         expect do
@@ -18,7 +20,7 @@ describe CampaignsController, type: :controller do
     end
 
     context 'invalid params' do
-      let(:invalid_attributes) { {name: 'CMP name', uid: nil, audience_id: audience.id} }
+      let(:invalid_attributes) { { name: 'CMP name', uid: nil, audience_id: audience.id } }
 
       it 'not created' do
         expect do
@@ -46,7 +48,7 @@ describe CampaignsController, type: :controller do
 
     context 'invalid params' do
       it "campaign doesn't get updated" do
-        put :update, params: {  id: campaign.id, campaign: invalid_attributes }
+        put :update, params: { id: campaign.id, campaign: invalid_attributes }
 
         expect(response).to have_http_status(422)
       end
@@ -60,7 +62,7 @@ describe CampaignsController, type: :controller do
       expect do
         delete :destroy, params: { id: campaign.id }
       end.to change(Campaign, :count).by(-1)
-      
+
       expect(response).to have_http_status(:no_content)
     end
   end

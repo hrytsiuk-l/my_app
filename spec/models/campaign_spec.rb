@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe Campaign, type: :model do
-  let(:campaign) { Campaign.new(name: 'foo', uid: 'cmp_uid',) }
+  let(:campaign) { Campaign.new(name: 'foo', uid: 'cmp_uid') }
   before { campaign.save }
 
   context 'relations' do
@@ -22,7 +24,7 @@ describe Campaign, type: :model do
     let(:campaign1) { Campaign.new(uid: 'cmp_uid') }
     it { expect(campaign1).to_not be_valid }
   end
-  
+
   context 'precence uid' do
     let(:campaign) { Campaign.new(uid: '') }
     it { expect(campaign).to_not be_valid }
